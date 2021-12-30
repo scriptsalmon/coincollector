@@ -1,40 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import axios from "axios";
+import CoinList from './components/CoinList';
 
 function App() {
-  const [data, setData] = useState("");
-  const [reveal, setReveal] = useState(false);
+  // const handleReveal = () => {
+  //   setReveal(true);
+  // };
+  // const handleHide = () => {
+  //   setReveal(false);
+  // };
 
-  useEffect(() => {
-    axios
-      .get("https://api.coingecko.com/api/v3/coins/bitcoin")
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  const handleReveal = () => {
-    setReveal(true);
-  };
-  const handleHide = () => {
-    setReveal(false);
-  };
-
-  console.log(data);
+  // console.log(data);
   return (
     <div className="App">
+      <CoinList />
       <header className="App-header">
         {/* <img src={data.image.small} alt="coin logo"/> */}
-        <div className="coinDiv" onMouseEnter={handleReveal} onMouseLeave={handleHide}>
+        {/* <div className="coinDiv" onMouseEnter={handleReveal} onMouseLeave={handleHide}>
           <h1>{data.name}</h1>
-        </div>
+        </div> */}
         {/* <button onMouseEnter={handleReveal}>description</button> */}
-        {reveal ? <p>{data.description.en}</p> : ""}
+        {/* {reveal ? <p>{data.description.en}</p> : ""} */}
       </header>
     </div>
   );
