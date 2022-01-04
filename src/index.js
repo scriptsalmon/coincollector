@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import "./index.css";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  const [coinData, setCoinData] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true"
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  return <div>
+    test
+  </div>;
+};
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
