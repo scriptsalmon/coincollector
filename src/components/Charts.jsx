@@ -3,12 +3,10 @@ import Chart from './Chart';
 
 const Charts = ({ coinData }) => {
     const [show, setShow] = useState(false);
+    const [selected, setSelected] = useState();
 
-    const handleShow = (e) => {
-        // if(coinData.name === e){
-        //     setShow(!show);
-        // }
-        console.log(e);
+    const handleShow = (id) => {
+        selected === id ? setSelected(null) : setSelected(id);
         setShow(!show);
     }
 
@@ -22,8 +20,8 @@ const Charts = ({ coinData }) => {
                     <div className="coin__logo">
                         <img src={coin.image} height="40" alt={coin.name}/>
                     </div>
-                    <button onClick={() => handleShow(coin.name)}>Chart</button>
-                    {show ? <Chart sparklineData={coin.sparkline_in_7d.price} setShow={setShow} /> : ""}
+                    <button onClick={() => handleShow(coin.id)}>Chart</button>
+                    {selected === coin.id ? <Chart sparklineData={coin.sparkline_in_7d.price} /> : null}
                 </div>
             ))}
         </div>

@@ -9,9 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 
-const Chart = (props) => {
-  const { sparklineData, setShow } = props;
-
+const Chart = ({sparklineData}) => {
   const formattedData = sparklineData
     .map((price, index) => {
       if (index % 6 === 0) {
@@ -29,7 +27,7 @@ const Chart = (props) => {
     .filter((data) => data);
 
   return (
-    <LineChart width={1100} height={300} data={formattedData}>
+    <LineChart width={550} height={300} data={formattedData}>
       <Line type="monotone" dataKey="value" stroke="#8884d8" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <XAxis dataKey="date" interval={3} />
