@@ -5,6 +5,7 @@ import axios from "axios";
 import "./index.css";
 
 import Charts from "./components/Charts";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const [coinData, setCoinData] = useState([]);
@@ -20,7 +21,8 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className={darkMode ? "dark-mode App" : "App"}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Charts coinData={coinData} />
     </div>
   );
