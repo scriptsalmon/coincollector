@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from './Chart';
 
 const Charts = ({ coinData }) => {
+    const [show, setShow] = useState(false);
+
+    const handleShow = (e) => {
+        // if(coinData.name === e){
+        //     setShow(!show);
+        // }
+        console.log(e);
+        setShow(!show);
+    }
+
     console.log(coinData);
     return (
         <div className="charts">
@@ -12,7 +22,8 @@ const Charts = ({ coinData }) => {
                     <div className="coin__logo">
                         <img src={coin.image} height="40" alt={coin.name}/>
                     </div>
-                    {/* chart */}
+                    <button onClick={() => handleShow(coin.name)}>Chart</button>
+                    {show ? <Chart sparklineData={coin.sparkline_in_7d.price} setShow={setShow} /> : ""}
                 </div>
             ))}
         </div>
