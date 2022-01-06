@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-import { useDarkMode } from './hooks/useDarkMode';
+import { useDarkMode } from "./hooks/useDarkMode";
 
-import Charts from "./components/Charts";
+import Coins from './components/Coins';
 import Navbar from "./components/Navbar";
 
 import "./styles.scss";
@@ -22,10 +22,12 @@ const App = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(coinData);
+
   return (
     <div className={darkMode ? "dark-mode App" : "App"}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Charts coinData={coinData} />
+      <Coins coinData={coinData} />
     </div>
   );
 };

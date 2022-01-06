@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import Chart from './Chart';
+import Details from './Details';
 
 const Charts = ({ coinData }) => {
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState();
+    const [hover, setHover] = useState(false);
 
     const handleShow = (id) => {
         selected === id ? setSelected(null) : setSelected(id);
         setShow(!show);
     }
 
-    console.log(coinData);
     return (
-        <div className="charts">
+        <div className="coins">
             {coinData.map(coin => (
-                <div className="chart__container" key={coin.name}>
+                <div className="coin__container" key={coin.name} onClick={() => handleShow(coin.id)}>
+                    <div className="coin__rank">{coin.market_cap_rank}</div>
                     <h2 className="coin__title">{coin.name}</h2>
-                    <h4 className="coin__symbol">{coin.symbol}</h4>
                     <div className="coin__logo">
                         <img src={coin.image} height="40" alt={coin.name}/>
                     </div>
-                    <button onClick={() => handleShow(coin.id)}>Chart</button>
+                    <h4 className="coin__symbol">{coin.symbol}</h4>
+                    {selected === coin.id ? <Details coin={coin} /> : null}
+                    {/* <button onClick={() => handleShow(coin.id)}>Chart</button> */}
                     {selected === coin.id ? <Chart sparklineData={coin.sparkline_in_7d.price} /> : null}
                 </div>
             ))}
