@@ -5,7 +5,6 @@ import Details from './Details';
 const Charts = ({ coinData }) => {
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState();
-    const [hover, setHover] = useState(false);
 
     const handleShow = (id) => {
         selected === id ? setSelected(null) : setSelected(id);
@@ -16,7 +15,7 @@ const Charts = ({ coinData }) => {
         <div className="coins">
             {coinData.map(coin => (
                 <div className="coin__container" key={coin.name} onClick={() => handleShow(coin.id)}>
-                    <div className="coin__rank">{coin.market_cap_rank}</div>
+                    {/* <div className="coin__rank">{coin.market_cap_rank}</div> */}
                     <h2 className="coin__title">{coin.name}</h2>
                     <div className="coin__logo">
                         <img src={coin.image} height="40" alt={coin.name}/>

@@ -3,11 +3,6 @@ import React from "react";
 const Details = ({ coin }) => {
   return (
     <div className="details__container">
-      {/* <h2 className="coin__title">{coin.name}</h2>
-      <div className="coin__logo">
-        <img src={coin.image} height="40" alt={coin.name} />
-      </div>
-      <h4 className="coin__symbol">{coin.symbol}</h4> */}
         <h5 className="detail">Market Cap Rank: {coin.market_cap_rank}</h5>
         <h5 className="detail">Market Cap: {coin.market_cap}</h5>
         <h5 className="detail">Circulating Supply: {coin.circulating_supply}</h5>
